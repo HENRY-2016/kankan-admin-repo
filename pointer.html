@@ -1,0 +1,63 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>Pointer To Web</title>
+<script>
+function Create_Offline_Label ()
+{
+    let offline_label_div = document.getElementById("offline-label-div");
+    let label = document.createElement("label");
+    label.innerHTML = "<br><br>Your Are Offline <br><br> Please <br>Connect To Network"
+    label.className = "Offline-Label"
+    offline_label_div.appendChild(label)
+}
+function PointToHenryWebsite () {window.location="http://192.168.43.140:7070/index.html"}
+function Check_Network_Status ()
+{
+	if (!navigator.onLine) {Create_Offline_Label ();}
+	else if (navigator.onLine) {window.location="http://192.168.43.140:7070/index.html"}
+}
+</script>
+<style>
+.Offline-Label
+{
+    font-size: 25px;
+    font-family:Times New Roman Times, serif;
+    color:red;
+    font-weight: bold;
+    font-style: italic;
+    background-color: white;
+    border-bottom: 2px dashed blue
+}
+
+.back-btn-label
+{
+    font-size: 20px;
+    font-weight:bold;
+    font-family:Times New Roman Times, serif;
+    color:white;
+}
+.back-btn
+{
+    background-color:black;
+    border:none;
+    width:30%;
+    height:35px;
+    border-radius:18px;
+
+    font-size: 20px;
+    font-weight:bold;
+    font-family:Times New Roman Times, serif;
+    color:white;
+}
+</style>
+</head>
+
+<body onload="Check_Network_Status ()" ononline="PointToHenryWebsite ()">
+<center>
+    <div id="offline-label-div" ></div> <br><br>
+    <button class="back-btn" onclick="javascript:history.go(-1)"><< </button><br><br>
+</center>
+</body>
+</html>
