@@ -13,8 +13,11 @@
 <script>
 function Check_Network_Status ()
 {
-	// RedirectToServer ();
-
+	if (!navigator.onLine) {Create_Offline_Label ();}
+	else if (navigator.onLine) 
+		{
+			LoadEstherUsingGitHub ();
+		}
 }
 </script>
 </head>
@@ -28,17 +31,20 @@ function Check_Network_Status ()
 	</div>	
 
 	<br><br>
-	<button class="next-to-payment-btn" onclick="LoadUsingLapTop ()">LapTop</button><br><br>
+	<!-- <button class="next-to-payment-btn" onclick="LoadUsingLapTop ()">LapTop</button><br><br>
 	<button class="next-to-payment-btn" onclick="LoadUsingRaspberry ()">Raspberry</button><br><br>
-	<button class="next-to-payment-btn" onclick="LoadUsingGitHub ()">Repo</button><br><br>
+	<button class="next-to-payment-btn" onclick="LoadUsingGitHub ()">Repo</button><br><br> -->
 
 	<!-- <b><b>==========================================================================</p></b> -->
-	<br><br>
+	<!-- <br><br>
 	<button class="next-to-payment-btn" onclick="LoadEstherUsingLapTop ()">LapTop</button><br><br>
 	<button class="next-to-payment-btn" onclick="LoadEstherUsingRaspberry ()">Raspberry</button><br><br>
 	<button class="next-to-payment-btn" onclick="LoadEstherUsingGitHub ()">Repo</button><br><br>
+ -->
 
-
+ 	<center>
+		 <div id="offline-label-div"></div>
+	 </center>
 
 </body>
 </html>
