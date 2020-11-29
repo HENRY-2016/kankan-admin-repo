@@ -39,6 +39,7 @@
     <!-- =========================================== -->
 
     <!-- img file -->
-    <icon src="static/imgs/icone.png" />
+    <!-- <icon src="static/imgs/icone.png" /> -->
+    <icon src="static/imgs/icone-esther.png" />
     <plugin name="cordova-plugin-whitelist" />
 </widget>
