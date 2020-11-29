@@ -1,10 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!-- <widget xmlns = "http://www.w3.org/ns/widgets" xmlns:gap = "http://phonegap.com/ns/1.0" id = "com.kankan.admin" version = "1.0.0">
-     -->
+    <name>Kankan </name>
+    <description>kankan Admin App </description> -->
 
 <widget xmlns = "http://www.w3.org/ns/widgets" xmlns:gap = "http://phonegap.com/ns/1.0" id = "com.esther.admin" version = "1.0.0">
-    <!-- <name>Kankan </name>
-    <description>kankan Admin App </description> -->
 
     <name>palm </name>
     <description>Palm Court Restaurant Admin App </description>
@@ -39,6 +38,7 @@
         <access origin="*" />
     <!-- =========================================== -->
 
+    <!-- img file -->
     <icon src="static/imgs/icone.png" />
     <plugin name="cordova-plugin-whitelist" />
 </widget>
