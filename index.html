@@ -1,57 +1,53 @@
 
 
-
-
-
-
 <html>
 <head>
 <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-<title>kan kan | Admin</title>
+<title>BigTime | Admin </title>
+
 <script src="static/js/main.js"></script>
 <link rel="stylesheet" type="text/css" href="static/css/main.css">
 <script>
-
-function ConnectToGitHub ()
- {
-	LoadEstherUsingGitHub ();
- }
+	function ConnectToGitHub ()
+	{
+	// LoadAdonoiUsingGitHub ();
+	LoadAdonoiUsingRaspberry ();
+	}
 function Check_Network_Status ()
 {
-	if (!navigator.onLine) {Create_Offline_Label ();}
+	if (!navigator.onLine) {ShowAlertBox ();}
 	else if (navigator.onLine) 
 		{
-			LoadEstherUsingGitHub ();
+			// LoadAdonoiUsingGitHub ();
+			LoadAdonoiUsingRaspberry ();
 		}
 }
 </script>
 </head>
 
-<body class="main_body" onload="Check_Network_Status ()" ononline="ConnectToGitHub ()">
+<body class="main_body" onload="Check_Network_Status ()" ononline="ConnectToGitHub ()" >
 <div id="main-header">
-	<div  id= "Navigetion" class=" w3-light-grey header">
+	<div  id= "Navigetion" class=" header">
 		<div id="NaviDivHeader">
-			<label class="open-navigation-label" onclick="OpenNavigetion()">&#9776;</label>
+			<span class="navigetion-icone-flower" >&#9781;</span>
 		</div>
 	</div>	
 
-	<br><br>
-	<!-- <button class="next-to-payment-btn" onclick="LoadUsingLapTop ()">LapTop</button><br><br>
-	<button class="next-to-payment-btn" onclick="LoadUsingRaspberry ()">Raspberry</button><br><br>
-	<button class="next-to-payment-btn" onclick="LoadUsingGitHub ()">Repo</button><br><br> -->
+	<div id="alert-box-display-area"></div>
+	<div id="alert-box">
+		<div>
+			<div id="alert-box-header"></div>
+			<div id="alert-box-body"></div>
+			<div id="alert-box-footer"></div>
+		</div>
+	</div>
 
-	<!-- <b><b>==========================================================================</p></b> -->
-	<!-- <br><br>
-	<button class="next-to-payment-btn" onclick="LoadEstherUsingLapTop ()">LapTop</button><br><br>
-	<button class="next-to-payment-btn" onclick="LoadEstherUsingRaspberry ()">Raspberry</button><br><br>
-	<button class="next-to-payment-btn" onclick="LoadEstherUsingGitHub ()">Repo</button><br><br>
- -->
 
- 	<center>
-		 <div id="offline-label-div"></div>
-	 </center>
+	
+	<center>
+		<br><br>
+		<div id="offline-label-div"></div>
+	</center>
 
 </body>
 </html>
-
-	
