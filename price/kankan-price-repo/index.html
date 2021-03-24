@@ -1,0 +1,129 @@
+
+
+
+<html>
+<head>
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+<title>Order Post</title>
+<script src="static/js/jquery.min.js" ></script>
+<script src="static/js/main.js" ></script>
+<link rel="stylesheet" href="static/css/main.css">
+<link rel="stylesheet" href="static/css/w3.css">
+<link rel="stylesheet" href="static/css/mediarules.css">
+<script>
+
+function StartBackGroundCalculation ()
+{ 
+    // Create_Paint_Types_Names ()
+    setInterval(CalculateSubtotalAutomatically,1000); 
+    setInterval(CalculateGrandtotalAutomatically,1000)
+
+}
+</script>
+
+</head>
+
+<body class="main_body" onload="StartBackGroundCalculation ()">
+	
+<div id="main-body" > <!-- Begin main-body div -->
+	<br>
+    <center>
+        <button onclick="LoadOrdersViewPage ()" class="navigation-btn" >View Orders</button><br>
+        <button onclick="LoadOrdersPostPage ()" class="navigation-btn" >Order Post</button><br>
+        
+        <button onclick="Open_Modal_And_Show_Detials ()" class="show-names-and-prices-btn" >Details</button>
+        <!-- The Modal  for displaying the names and prices -->
+        <div id="id01" class="w3-modal">
+            <div class="w3-modal-content w3-card-8" >
+                <div class="w3-container">
+                    <header class="w3-container w3-blue-grey" >
+                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn" >
+                            <label class="close-modal-popup" >Close</label>
+                        </span>
+                    </header>
+                        <br><label class="names-and-prices-label" >Paint Name : 20 Ltrs 4 Ltrs 1 Ltr 0.5 Ltr </label><br><br>
+                        <table id="names-prices-table" ></table><br><br>
+                    <footer class="w3-container w3-blue-grey" >
+                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn" >
+                            <label class="close-modal-popup" >Close</label>
+                        </span>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    <!-- </center> -->
+		<div class="order-input-div">
+			<center>
+
+				<form autocomplete="off" id="products-form"><br>
+					<label class="input-discription-labels">Paint Type</label><br>
+					<div class="autocomplete">
+						<input id="type-input-id" type="text" name="paint_name" placeholder="Type first letter" class="paint-name order-inputs">
+					</div><br>
+					<label class="input-discription-labels">Select size</label>
+					<select id="size-input-id" onchange="DisplayCostPrice ('type-input-id','size-input-id','cost-price-id')" name="paint_name" id="size-id" placeholder="Size" class="paint-name order-inputs">
+						<option></option>
+						<option value="0.5ltr" >0.5 ltr</option>
+						<option value="1ltr" >1 Ltr</option>
+						<option value="4ltrs" >4 Ltrs</option>
+						<option value="20ltrs" >20 Ltrs</option>
+					</select>
+					<!-- <label class="input-discription-labels">colour name</label>
+					<select id="colour-input-id" placeholder="Colour" class="paint-name order-inputs"><option></option></select> -->
+					<input  id="qty-input-id" class="order-inputs" type="text" placeholder="Quantity"  name="paint_name" />
+					<input id="cost-price-id"  readonly class="order-inputs" type="text"  name="paint_name" placeholder="Cost" />
+					<input id="total-input-id" readonly class="subtotalinputs order-inputs" name="paint_name" placeholder="sub total" type="text"/>
+				</form>
+				<button onclick="CreatCustomerList('type-input-id','size-input-id','qty-input-id','cost-price-id','total-input-id','un-ordered-list-id')" class="add-order-list-btn">Add</button>
+            
+			</br>
+                <label class="order-list-label" >Order List</label><br>
+                <label id="display-msg-label" class="display-msg-label"> Enter Paint Type,Size And Quantity </label>
+            <br><ul id="un-ordered-list-id"></ul>
+            
+                <input id="final-total-id" class="grand-total-input order-inputs" name="paint_name" readonly placeholder="Final Total" type="text"/>
+                <br><br>
+                
+                <label class="input-discription-labels">User Name</label><br>
+                <input id="username-input-id" type="text" name="paint_name" placeholder="Type your name" class="paint-name order-inputs">
+
+                <label class="input-discription-labels">Outlet Name</label><br>
+                <select id="outlet-input-id"  placeholder="Size" class="paint-name order-inputs">
+                    <option></option>
+                    <option value="Kitende" >Kitende</option>
+                    <option value="Nakasero" >Nakasero</option>
+                    <option value="Freedom City" >Freedom City</option>
+                </select>
+                <br><br>
+                <button onclick="SubmiteData ('orders_process_post')" type="button" class="post-btn" >Post</button><br>
+			</center>
+	</div>
+
+<script>
+function Open_Modal_And_Show_Detials ()
+{
+    document.getElementById('id01').style.display='block';
+
+    let label = document.getElementById('names-and-prices-label-id');
+    let tabel = document.getElementById('names-prices-table');
+    
+    // Getting key value from object ... use for of with Object.keys()
+    for (key of Object.keys(Paint_Factory_Prices))
+    {
+        console.log(key + '::'+ Paint_Factory_Prices[key])
+        names_and_prices = key + ' : '+ Paint_Factory_Prices[key]
+        // attach to the table
+        number_of_rows = tabel.rows;
+        row = tabel.insertRow(number_of_rows);
+        row.insertCell(0).innerHTML= names_and_prices;
+
+    }
+}
+
+
+// Create an array of Names From Paint_Factory_Prices
+let Paint_types = Object.keys(Paint_Factory_Prices);
+autocomplete(document.getElementById("type-input-id"), Paint_types)
+</script>
+</body>
+</html>

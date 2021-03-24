@@ -1,0 +1,121 @@
+
+<html>
+<head>
+<title>Admin | View Orders </title>
+<meta charset="utf-8">
+<!-- <script src="static/js/others/adminedits.js" ></script> -->
+<script src="static/js/main.js" ></script>
+<script src="static/js/main_view.js" ></script>
+<script src="static/js/ordersreceived.js" ></script>
+<script src="static/js/jquery.min.js" ></script>
+<link rel="stylesheet" type="text/css" href="static/css/main.css" >
+<link rel="stylesheet" type="text/css" href="static/css/w3.css">
+
+<script>
+    function Initialize ()
+    {
+        
+        HideAllVeiwDivs ()
+    }
+</script>
+
+</head>
+<!-- HideAllVeiwDivs -->
+<body class="main_body" onload="Initialize ()">
+
+</div> <!-- main-header-->
+
+<div id="main-body" > <!-- Begin main-body div -->
+    <br><br>
+    <center>
+        <button onclick="LoadOrdersViewPage ()" class="navigation-btn" >View Orders</button><br>
+        <button onclick="LoadOrdersPostPage ()" class="navigation-btn" >Order Post</button><br>
+        <!-- <button class="show-names-and-prices-btn" >View Orders</button><br><br> -->
+    </center>
+    <center>
+        <div id="view-feedbacks-div"></div>
+    </center>
+        <!-- ===================================================== -->
+        <center><button onclick="ShowPlasconRetailViewAllDiv ()" class="orders-view-btn view-font-styles">All</button></center><br><br>
+            <div id="plascon-retail-view-all-div">
+                <center><button onclick="FetchOrdersDataFromServer('vieworders_posted_view_all_endpoint','orders-view-all')" class="show-btn  view-font-styles">Show</button></center>
+                <div id="orders-view-all"></div>
+                <br><br>
+            </div>
+            <!-- ===================================================== -->
+        <center><button onclick="ShowPlasconRetailOrdersByDateDiv ()" class="orders-view-btn view-font-styles">By Date</button><br><br></center>
+        <div id="plascon-retail-orders-by-date-div">
+            <center><button onclick="ShowPlasconRetailByDateTodayGrandChildDiv ()" class="view-btns-grand-child view-font-styles">Today</button></center>
+                <div id="plascon-retail-by-date-today-grand-child-div"><br>
+                    <center><button onclick="FetchOrdersDataFromServer  ('vieworders_posted_view_by_date_today_endpoint','view-by-date-today-div')" class="show-btn  view-font-styles">Show</button></center>
+                    <div id="view-by-date-today-div"></div>
+                </div><br><br>
+
+            <center><button onclick="ShowPlasconRetailOrdersByDateDateDiv ()" class="view-btns-grand-child view-font-styles">Date</button></center>
+            <div id="plascon-retail-orders-by-date-date-div" >
+                <center>
+                    <form class="form-from-to-form" id="view-date-by-date-form" >
+                        <label>Date</label>
+                        <input class="form-view-inputs" type="date" name="date" onchange="FetchOrdersDataFromServerWithAForm('vieworders_posted_view_by_date_date_endpoint','view-by-date-date-div','view-date-by-date-form')" ><br>
+                    </form>
+                </center>
+                <div id="view-by-date-date-div"></div> 
+                <br>
+            </div>
+        </div><br><br>
+        <!-- ===================================================== -->
+        <center><button onclick="ShowPlasconRetailOrdersByFromToDiv ()" class="orders-view-btn view-font-styles">From -- To</button> </center><br><br> 
+        <div id="plascon-retail-orders-by-from-to-div">
+            <center>
+                <form class="form-from-to-form" id="from-to-form">
+                    <table>
+                        <tr>
+                            <td>
+                                <label> From </label>
+                                <input class="form-view-inputs" type="date" autocomplete="off" name="from">
+                            </td>
+                            <td>
+                                <label> To </label>
+                                <input class="form-view-inputs" type="date" autocomplete="off" name="to">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </center> 
+            <div id="from-to-div">
+                <center><button onclick="FetchOrdersDataFromServerWithAForm ('vieworders_posted_view_by_from_to_endpoint','view-by-from-to-div','from-to-form')" class="show-btn view-font-styles"  >Show</button></center>
+                <div id="view-by-from-to-div"></div>
+            </div>
+            <br><br><br>
+        </div> 
+    
+        <!-- ===================================================== -->
+        <center><button onclick="ShowPlasconRetailOrdersByLastWeekDiv ()" class=" orders-view-btn view-font-styles">Last Week</button> </center><br><br>
+        <div id="plascon-retail-orders-by-last-week-div">
+            <center><button onclick="FetchOrdersDataFromServerLastWeek ('vieworders_posted_view_by_last_week_endpoint','view-by-last-week-div')" class="show-btn view-font-styles" >Show</button><br><br></center>
+                    <div id="view-by-last-week-div"></div>
+                <br><br>
+        </div>
+
+        <!-- ===================================================== -->
+        <center><button onclick="ShowPlasconRetailOrdersByThisMonthDiv ()" class="orders-view-btn view-font-styles">This Month</button></center> <br><br>
+        <div id="plascon-retail-orders-by-this-month-div">
+            <!-- <button  onclick="show_luwombo_orders_received_this_month_all_grand_child_div()" class="view-btns-grand-child   view-font-styles">All</button> -->
+            <center><button onclick="FetchOrdersDataFromServer ('vieworders_posted_view_by_this_month_endpoint','view-by-this-month-div')"   class="show-btn view-font-styles"  >Show</button></center>
+                <div id="view-by-this-month-div"></div>
+                <br><br>
+        </div>
+        <!-- ===================================================== -->
+        <center><button onclick="ShowPlasconRetailOrdersByLastMonthDiv ()" class="orders-view-btn  view-font-styles">Last Month</button></center> <br><br>
+        <div id="plascon-retail-orders-by-last-month-div">
+            <center><button onclick="FetchOrdersDataFromServer  ('vieworders_posted_view_by_last_month_endpoint','view-by-last-month-div')"   class="show-btn view-font-styles"  >Show</button></center>
+                <div id="view-by-last-month-div"></div>
+                <br><br>
+        </div>
+            
+        </div> 
+</div>
+    <!-- <button class="main-acordination-btns"> </button> -->
+</body>
+</html>
+
